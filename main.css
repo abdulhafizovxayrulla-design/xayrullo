@@ -1,0 +1,397 @@
+/* Asosiy Sozlamalar */
+:root {
+    --bg: #ffffff;
+    --text: #121212;
+    --accent: #007aff; /* Apple-style ko'k rang */
+    --gray: #86868b;
+    --card-bg: #f5f5f7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigatsiya */
+nav {
+    padding: 30px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.logo span { color: var(--accent); }
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 8vw, 90px);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+.hero h1 span { color: var(--accent); }
+
+.hero p {
+    font-size: 20px;
+    color: var(--gray);
+    margin: 30px 0;
+    max-width: 600px;
+}
+
+.btn {
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn.primary { background: var(--text); color: white; }
+.btn.secondary { border: 1px solid var(--text); color: var(--text); margin-left: 15px; }
+.btn:hover { transform: scale(1.05); }
+
+/* Loyihalar */
+.projects { padding: 100px 0; }
+
+.section-title {
+    font-size: 40px;
+    margin-bottom: 50px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.project-img img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.project-card:hover img { transform: scale(1.1); }
+
+.project-content { padding: 30px; }
+
+.tags { margin-top: 20px; display: flex; gap: 10px; }
+
+.tags span {
+    background: #e8e8ed;
+    padding: 5px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+/* Footer */
+footer {
+    padding: 100px 0;
+    background: #000;
+    color: white;
+    text-align: center;
+}
+
+footer h2 span { color: var(--accent); }
+
+.social-links {
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.social-links a {
+    color: white;
+    font-size: 30px;
+    transition: 0.3s;
+}
+
+.social-links a:hover { color: var(--accent); transform: translateY(-5px); }
+
+/* Reveal Animatsiyasi uchun boshlang'ich holat */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobil moslashuv */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .project-grid { grid-template-columns: 1fr; }
+}
+/* Tugmalar konteyneri */
+.hero-btns {
+    display: flex;
+    gap: 15px; /* Tugmalar orasida doimiy masofa */
+    justify-content: center;
+    flex-wrap: wrap; /* Ekran torayganda pastga tushishi uchun */
+    margin-top: 30px;
+}
+
+/* Tugmalarning o'zi */
+.btn.secondary {
+    border: 1px solid var(--text);
+    color: var(--text);
+    margin-left: 0; /* Oldingi marginni olib tashlaymiz, chunki 'gap' ishlatdik */
+}
+/* Tungi rejim ranglari */
+body.dark {
+    --bg: #000000;
+    --text: #ffffff;
+    --card-bg: #1c1c1e;
+    --gray: #a1a1a6;
+}
+
+/* Rejimni almashtirgich tugma uslubi */
+.theme-toggle {
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: 20px;
+    transition: 0.3s;
+}
+.cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;    
+}
+.project-img {
+    position: relative;
+    overflow: hidden;
+    transition: 0.6s ease;
+}
+.project-card::after {
+    content: 'Korish';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    background: var(--accent);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.project-card:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+:root {
+    /* ... boshqa o'zgaruvchilar ... */
+    --btn-bg: #121212;
+    --btn-text: #ffffff;
+    --btn-border: #121212;
+}
+
+[data-theme="dark"] {
+    /* ... boshqa o'zgaruvchilar ... */
+    --btn-bg: #ffffff;    /* Dark mode'da tugma oq bo'ladi */
+    --btn-text: #121212;  /* Dark mode'da yozuv qora bo'ladi */
+    --btn-border: #ffffff;
+}
+
+/* Tugma yozuvi har doim o'zgaruvchidan rang oladi */
+.btn.primary {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: 1px solid var(--btn-border);
+}
+
+.btn.secondary {
+    background: transparent;
+    color: var(--text); /* Bu o'zgaruvchi dark mode'da avtomat oq bo'ladi */
+    border: 1px solid var(--text);
+}
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.skills {
+    padding: 100px 0;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+}
+
+.skill-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    border: 1px solid var(--accent);
+}
+
+.skill-card i {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.skill-card h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.progress-bar {
+    background: #e0e0e0;
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+[data-theme="dark"] .progress-bar {
+    background: #333;
+}
+
+.progress {
+    background: var(--accent);
+    height: 100%;
+    border-radius: 10px;
+    width: 0; /* JS orqali animatsiya bo'ladi */
+    transition: width 1.5s cubic-bezier(0.1, 0, 0.2, 1);
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid var(--gray);
+    background: var(--card-bg);
+    color: var(--text);
+    font-family: inherit;
+    outline: none;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: var(--accent);
+}
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    opacity: 0; /* Boshida ko'rinmaydi */
+    visibility: hidden;
+    transition: all 0.4s ease;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+    background-color: var(--text);
+    transform: translateY(-5px);
+}
+
+/* Telefonlar uchun biroz kichikroq qilish */
+@media (max-width: 768px) {
+    .scroll-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+    }
+}
